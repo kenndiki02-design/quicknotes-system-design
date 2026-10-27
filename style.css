@@ -1,0 +1,83 @@
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #1d2433;
+  --muted: #5b6577;
+  --line: #d6dbe4;
+  --accent: #0f6b8f;
+  --accent-dark: #0a4f6a;
+  --ok-bg: #e3f4ea;  --ok-ink: #17653a;  --ok-line: #8fcfa8;
+  --err-bg: #fdeaea; --err-ink: #9b1c1c;  --err-line: #eba3a3;
+  --wait-bg: #e8eef6; --wait-ink: #2c4a6e; --wait-line: #b3c5dc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+main { max-width: 42rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+h1 { margin: 0 0 .25rem; font-size: 2rem; }
+.intro { margin: 0 0 1.5rem; color: var(--muted); }
+
+button {
+  font: inherit;
+  padding: .55rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--accent-dark); }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #f2b441; outline-offset: 2px; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+
+.status {
+  margin: 1rem 0;
+  padding: .65rem .9rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.status-loading { background: var(--wait-bg); color: var(--wait-ink); border-color: var(--wait-line); }
+.status-success { background: var(--ok-bg);   color: var(--ok-ink);   border-color: var(--ok-line); }
+.status-error   { background: var(--err-bg);  color: var(--err-ink);  border-color: var(--err-line); font-weight: 600; }
+
+#note-form {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+#note-form label { display: block; margin-bottom: .25rem; font-weight: 600; }
+#note-form input, #note-form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: .5rem .6rem;
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+#note-form textarea { min-height: 6rem; resize: vertical; }
+.optional { font-weight: 400; color: var(--muted); }
+
+#notes-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+#notes-list li {
+  padding: .9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+}
+#notes-list h3 { margin: 0 0 .35rem; font-size: 1.05rem; }
+#notes-list p { margin: 0 0 .75rem; color: var(--muted); white-space: pre-line; }
+#notes-list li.empty { border-left-color: var(--line); color: var(--muted); font-style: italic; }
+.delete-btn { background: var(--err-ink); padding: .35rem .75rem; font-size: .9rem; }
+.delete-btn:hover:not(:disabled) { background: #7a1515; }
